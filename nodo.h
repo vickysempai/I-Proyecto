@@ -19,6 +19,8 @@ class nodo {
        valor = v;
        siguiente = signodo;
     }
+    void siguiente()
+    
 
  private:
     int valor;
