@@ -1,14 +1,16 @@
-#ifndef LISTADC_H
-#define LISTADC_H
+#ifndef LISTASIMPLE_H
+#define LISTASIMPLE_H
+#include <cstdlib>
+#include "nodociudad.h"
 
-#include "nodousuario.h"
+using namespace std;
 
-typedef nodousuario *pnodo;
+typedef nodociudad *pnodo;
 
-class listaDC {
+class lista {
    public:
-    listaDC() { primero = actual = NULL; }
-    ~listaDC();
+    lista() { primero = actual = NULL; }
+    ~lista();
     
     void InsertarInicio(string v);
     void InsertarFinal(string v);
@@ -17,6 +19,8 @@ class listaDC {
     void EliminarFinal();
     void EliminarPos(int pos);
     bool ListaVacia() { return primero == NULL; } 
+    void Buscar(string numero);
+    void Buscar(string numero, int pos);
     void Imprimir();
     void Borrar(int v);
     void Mostrar();
@@ -27,11 +31,15 @@ class listaDC {
     void BorrarInicio();
     void borrarPosicion(int pos);
     int largoLista();
-    
+    void Sumar(int numero1,int numero2);
+    /*int GetValor(int pos);
+    void SumarDiferenteTamano(int numero1,int numero2);
+    bool PosicionValida(int pos);
+    void InsertarNumero(int numero);*/
+   
    private:
     pnodo primero;
     pnodo actual;
 };
 
-#endif /* LISTADC_H */
-
+#endif /* LISTASIMPLE_H */

@@ -1,14 +1,17 @@
-#ifndef LISTADC_H
-#define LISTADC_H
+#ifndef LISTADOBLE_H
+#define LISTADOBLE_H
 
-#include "nodousuario.h"
+#include <iostream>
+#include "nodosupermercado.h"
 
-typedef nodousuario *pnodo;
+using namespace std;
 
-class listaDC {
+typedef nodosupermercado *pnodo;
+
+class listaD {
    public:
-    listaDC() { primero = actual = NULL; }
-    ~listaDC();
+    listaD() { primero = actual = NULL; }
+    ~listaD();
     
     void InsertarInicio(string v);
     void InsertarFinal(string v);
@@ -20,9 +23,6 @@ class listaDC {
     void Imprimir();
     void Borrar(int v);
     void Mostrar();
-    void Siguiente();
-    void Primero();
-    void Ultimo();
     void BorrarFinal();
     void BorrarInicio();
     void borrarPosicion(int pos);
@@ -31,7 +31,7 @@ class listaDC {
    private:
     pnodo primero;
     pnodo actual;
+
 };
 
-#endif /* LISTADC_H */
-
+#endif /* LISTADOBLE_H */

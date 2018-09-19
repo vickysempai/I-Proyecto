@@ -1,16 +1,20 @@
-#include <cstdlib>
-#include "ListaDC.h"
-#include "nodo.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <stdlib.h>
+#include <sstream>
+#include <stdio.h>
+#include <cstring>
 
+#include "nodociudad.h"
+#include "leerarchivo.h"
 using namespace std;
 
 int main(int argc, char** argv) {
-    listaDC lista;
-    lista.InsertarFinal(12);
-    lista.InsertarFinal(11);
-    lista.Mostrar();
     
-
+    //nodociudad dedo("12;San jose");
+    leerarchivo("ciudad.txt");
     return 0;
 }
 

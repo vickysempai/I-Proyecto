@@ -1,17 +1,16 @@
-#ifndef NODOCIUDAD_H
-#define NODOCIUDAD_H
+#ifndef NODOSUPERMERCADO_H
+#define NODOSUPERMERCADO_H
 
-#include <iostream>
+#include <cstdlib>
 #include <string>
 /*strcpy*/
 #include <stdio.h>
 #include <string.h>
-
 using namespace std;
 
-class nodociudad {
+class nodosupermercado {
    public:
-    nodociudad(string linea)
+    nodosupermercado(string linea)
 	    {
 		char str[linea.size()+1];
 	    strcpy(str,linea.c_str());
@@ -25,12 +24,12 @@ class nodociudad {
 	    	pch = strtok (NULL, ";");
 	    	cont++;
 	    }
-		codigo=atributos[0];
-	    ciudad=atributos[1];
+		codSuper=atributos[0];
+	    codProducto=atributos[1];
+	    codProducto=atributos[2];
 	    siguiente = NULL;
 		}
-		
-	nodociudad(string linea, nodociudad *sig)
+	nodosupermercado(string linea, nodosupermercado *sig)
 	    {
 		char str[linea.size()+1];
 	    strcpy(str,linea.c_str());
@@ -44,21 +43,24 @@ class nodociudad {
 	    	pch = strtok (NULL, ";");
 	    	cont++;
 	    }
-		codigo=atributos[0];
-	    ciudad=atributos[1];
+		codSuper=atributos[0];
+	    codProducto=atributos[1];
+	    codProducto=atributos[2];
 	    siguiente = sig;
 		}
-		
+    
+
  private:
-    string codigo;
-    string ciudad;
-    nodociudad *siguiente;
+    string codSuper;
+    string codProducto;
+    string nombre;
+    nodosupermercado *siguiente;
+    nodosupermercado *anterior;
     
         
-   friend class lista;
+   friend class listaD;
 };
-typedef nodociudad *pnodo;
 
 
-#endif /* NODOCIUDAD_H */
+#endif /* NODO_H */
 

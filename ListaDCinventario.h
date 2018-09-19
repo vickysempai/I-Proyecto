@@ -1,14 +1,14 @@
-#ifndef LISTADC_H
-#define LISTADC_H
+#ifndef LISTADCINVENTARIO_H
+#define LISTADCINVENTARIO_H
 
-#include "nodousuario.h"
+#include "nodoinventario.h"
 
-typedef nodousuario *pnodo;
+typedef nodoinventario *pnodo;
 
-class listaDC {
+class listaDCinventario {
    public:
-    listaDC() { primero = actual = NULL; }
-    ~listaDC();
+    listaDCinventario() { primero = actual = NULL; }
+    ~listaDCinventario();
     
     void InsertarInicio(string v);
     void InsertarFinal(string v);

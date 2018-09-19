@@ -1,8 +1,6 @@
-#include <cstdlib>
-#include <iostream>
-#include "ListaDC.h"
-
-listaDC::~listaDC()
+#include "ListaDCinventario.h"
+/*
+listaDCinventario::~listaDC()
 {
    pnodo aux;
    
@@ -15,9 +13,9 @@ listaDC::~listaDC()
    }
    actual = NULL;
 }
+*/
 
-
-int listaDC::largoLista()
+int listaDCinventario::largoLista()
 {
     int cont=0;
 
@@ -38,18 +36,18 @@ int listaDC::largoLista()
     
 }
 
-void listaDC::InsertarInicio(string v)
+void listaDCinventario::InsertarInicio(string v)
 {
   
    if (ListaVacia())
    {
-     primero = new nodousuario(v);
+     primero = new nodoinventario(v);
      primero->anterior=primero;
      primero->siguiente=primero;
    }  
    else
    {
-     pnodo nuevo=new nodousuario (v);
+     pnodo nuevo=new nodoinventario (v);
      nuevo->siguiente=primero;
      nuevo->anterior= primero->anterior;
      primero->anterior->siguiente=nuevo;
@@ -58,17 +56,17 @@ void listaDC::InsertarInicio(string v)
    }
 }
  
-void listaDC::InsertarFinal(string v)
+void listaDCinventario::InsertarFinal(string v)
 {
    if (ListaVacia())
      {
-     primero = new nodousuario(v);
+     primero = new nodoinventario(v);
      primero->anterior=primero;
      primero->siguiente=primero;
    }  
    else
    { 
-     pnodo nuevo = new nodousuario(v);
+     pnodo nuevo = new nodoinventario(v);
      nuevo->anterior = primero->anterior;
      nuevo->siguiente=primero->anterior->siguiente;
      primero->anterior->siguiente=nuevo;
@@ -77,11 +75,11 @@ void listaDC::InsertarFinal(string v)
 }
 
 
-void listaDC::InsertarPos(string v,int pos)
+void listaDCinventario::InsertarPos(string v,int pos)
 {
    if (ListaVacia())
    {
-     primero = new nodousuario(v);
+     primero = new nodoinventario(v);
      primero->anterior=primero;
      primero->siguiente=primero;
    } 
@@ -102,7 +100,7 @@ void listaDC::InsertarPos(string v,int pos)
                    i++;
                    aux=aux->siguiente;
              }
-             pnodo nuevo= new nodousuario(v);
+             pnodo nuevo= new nodoinventario(v);
              nuevo->siguiente=aux->siguiente;
              aux->siguiente=nuevo;
              aux->siguiente->anterior=aux;
@@ -112,7 +110,7 @@ void listaDC::InsertarPos(string v,int pos)
    }
 }   
 
-void listaDC::BorrarFinal()
+void listaDCinventario::BorrarFinal()
 {
     if (ListaVacia())
       cout << "No hay elementos en la lista:" << endl;
@@ -137,7 +135,7 @@ void listaDC::BorrarFinal()
     }
 }
 
-void listaDC::BorrarInicio()
+void listaDCinventario::BorrarInicio()
 {
     if (ListaVacia())
       cout << "No hay elementos en la lista:" << endl;
@@ -161,7 +159,7 @@ void listaDC::BorrarInicio()
     }
 }
 
-void listaDC:: borrarPosicion(int pos)
+void listaDCinventario:: borrarPosicion(int pos)
 {
     
   if(ListaVacia())
@@ -191,15 +189,15 @@ void listaDC:: borrarPosicion(int pos)
   }
 }
 
-void listaDC::Mostrar()
+void listaDCinventario::Mostrar()
 {
    pnodo aux=primero;
    while(aux->siguiente!=primero)
      {
                                 
-      cout << aux->cedula << "-> ";
+      cout << aux->CodProducto << "-> ";
       aux = aux->siguiente;
      }
-     cout<<aux->cedula<<"->";
+     cout<<aux->CodProducto<<"->";
      cout<<endl;
 }   

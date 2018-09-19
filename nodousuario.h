@@ -1,6 +1,16 @@
+#ifndef NODOUSUARIO_H
+#define NODOUSUARIO_H
+#include <cstdlib>
+#include <string>
+/*strcpy*/
+#include <stdio.h>
+#include <string.h>
+
+using namespace std;
+
 class nodousuario {
 	public:
-    nodousuario(string linea)
+    nodousuario (string linea)
 	    {
 		char str[linea.size()+1];
 	    strcpy(str,linea.c_str());
@@ -22,6 +32,8 @@ class nodousuario {
 	    siguiente = NULL;
 	    anterior =NULL;
 		}
+		
+		
 	nodousuario(string linea,nodousuario* nuevonodo)
 	    {
 		char str[linea.size()+1];
@@ -43,25 +55,21 @@ class nodousuario {
 	    categoria=atributos[4];
 	    siguiente = nuevonodo;
 		}
-	
+		
    private:
     string codCiudad;
     string nombre;
     string cedula;
     string telefono;
     string categoria;
-    //string codSuper;
-    //string codProducto;
-    //string cantidadProducto;
-    //string precioUnitario;
     nodousuario *siguiente;
     nodousuario *anterior;
     
 
-   friend class listaCiudades;
+   friend class listaDC;
 };
 
-typedef nodo *pnodo;
+typedef nodousuario *pnodo;
 
 
-#endif /* NODO_H */
+#endif /* NODOUSUARIO_H */
