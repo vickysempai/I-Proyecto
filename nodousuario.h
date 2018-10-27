@@ -1,5 +1,6 @@
 #ifndef NODOUSUARIO_H
 #define NODOUSUARIO_H
+#include <iostream>
 #include <cstdlib>
 #include <string>
 /*strcpy*/
@@ -12,45 +13,45 @@ class nodousuario {
 	public:
     nodousuario (string linea)
 	    {
-		char str[linea.size()+1];
-	    strcpy(str,linea.c_str());
-	    char * pch;
-	    pch = strtok (str,";");
-	    string atributos[5];
-	   	int cont=0;
-	    while (pch != NULL)
-	    {
-	    	atributos[cont]=pch;
-	    	pch = strtok (NULL, ";");
-	    	cont++;
-	    }
-	    codCiudad=atributos[0];
-	    nombre=atributos[1];
-	    cedula=atributos[2];
-	    telefono=atributos[3];
-	    categoria=atributos[4];
-	    siguiente = NULL;
-	    anterior =NULL;
+			char str[linea.size()+1];
+		    strcpy(str,linea.c_str());
+		    char * pch;
+		    pch = strtok (str,";");
+		    string atributos[5];
+		   	int cont=0;
+		    while (pch != NULL)
+		    {
+		    	atributos[cont]=pch;
+		    	pch = strtok (NULL, ";");
+		    	cont++;
+		    }
+		    codCiudad=atributos[0];
+		    cedula=atributos[1];
+		    nombre=atributos[2];
+		    telefono=atributos[3];
+		    categoria=atributos[4];
+		    siguiente = NULL;
+		    anterior =NULL;
 		}
 		
 		
 	nodousuario(string linea,nodousuario* nuevonodo)
 	    {
+	    	cout<<linea<<endl;
 		char str[linea.size()+1];
 	    strcpy(str,linea.c_str());
 	    char * pch;
 	    pch = strtok (str,";");
 	    string atributos[5];
 	   	int cont=0;
-	    while (pch != NULL)
-	    {
+	    while (pch != NULL){
 	    	atributos[cont]=pch;
 	    	pch = strtok (NULL, ";");
-	    	cont++;
-	    }
+	    	cont++;}
+	    	
 	    codCiudad=atributos[0];
-	    nombre=atributos[1];
-	    cedula=atributos[2];
+	    cedula=atributos[1];
+	    nombre=atributos[2];
 	    telefono=atributos[3];
 	    categoria=atributos[4];
 	    siguiente = nuevonodo;
@@ -68,8 +69,6 @@ class nodousuario {
 
    friend class listaDC;
 };
-
-typedef nodousuario *pnodo;
 
 
 #endif /* NODOUSUARIO_H */

@@ -2,26 +2,11 @@
 #include <iostream>
 #include "ListaDC.h"
 
-listaDC::~listaDC()
-{
-   pnodo aux;
-   
-   while(primero) {
-      aux = primero;
-      primero = primero->siguiente;
-      primero->anterior=aux->anterior;
-      aux->anterior->siguiente=primero;
-      delete aux;
-   }
-   actual = NULL;
-}
-
-
 int listaDC::largoLista()
 {
     int cont=0;
 
-    pnodo aux = primero;
+    nodousuario* aux = primero;
     if(ListaVacia())
     {
         return cont;
@@ -49,7 +34,7 @@ void listaDC::InsertarInicio(string v)
    }  
    else
    {
-     pnodo nuevo=new nodousuario (v);
+     nodousuario* nuevo=new nodousuario (v);
      nuevo->siguiente=primero;
      nuevo->anterior= primero->anterior;
      primero->anterior->siguiente=nuevo;
@@ -68,7 +53,7 @@ void listaDC::InsertarFinal(string v)
    }  
    else
    { 
-     pnodo nuevo = new nodousuario(v);
+     nodousuario* nuevo = new nodousuario(v);
      nuevo->anterior = primero->anterior;
      nuevo->siguiente=primero->anterior->siguiente;
      primero->anterior->siguiente=nuevo;
@@ -95,14 +80,14 @@ void listaDC::InsertarPos(string v,int pos)
           InsertarFinal(v);
         else
         {     
-             pnodo aux= primero;
+             nodousuario* aux= primero;
              int i =2;
              while((i != pos )&&(aux->siguiente!= primero))
              {
                    i++;
                    aux=aux->siguiente;
              }
-             pnodo nuevo= new nodousuario(v);
+             nodousuario* nuevo= new nodousuario(v);
              nuevo->siguiente=aux->siguiente;
              aux->siguiente=nuevo;
              aux->siguiente->anterior=aux;
@@ -120,16 +105,16 @@ void listaDC::BorrarFinal()
     {
       if (primero->siguiente == primero)
       {
-        pnodo temp= primero;
+        nodousuario* temp= primero;
         primero= NULL;
         delete temp;
       }
       else 
       {
-         pnodo aux = primero;
+         nodousuario* aux = primero;
          while (aux->siguiente->siguiente != primero)
               aux = aux->siguiente;
-         pnodo temp = aux->siguiente;
+         nodousuario* temp = aux->siguiente;
          aux->siguiente= primero;
          primero->anterior=aux;
          delete temp;
@@ -145,14 +130,14 @@ void listaDC::BorrarInicio()
     {
      if (primero->siguiente == primero)
      {
-        pnodo temp= primero;
+        nodousuario* temp= primero;
         primero= NULL;
         delete temp;
      }
      else
      {
-        pnodo aux = primero->anterior;
-        pnodo temp= primero;
+        nodousuario* aux = primero->anterior;
+        nodousuario* temp= primero;
         aux->siguiente=primero->siguiente;
         primero=primero->siguiente; 
         primero->anterior=aux;
@@ -177,13 +162,13 @@ void listaDC:: borrarPosicion(int pos)
       else
       {
        int cont=2;
-       pnodo aux=  primero;
+       nodousuario* aux=  primero;
        while(cont<pos)
        {
          aux=aux->siguiente;
          cont++;
        }
-       pnodo temp = aux->siguiente;
+       nodousuario* temp = aux->siguiente;
        aux->siguiente=aux->siguiente->siguiente;
        delete temp;
      }
@@ -191,15 +176,37 @@ void listaDC:: borrarPosicion(int pos)
   }
 }
 
+bool listaDC::verificar(string cedula)
+{
+   nodousuario* aux=primero;
+   do{
+    	cout<<aux->cedula<<"	"<<cedula<<endl;
+      if(aux->cedula==cedula) return true;
+      else aux = aux->siguiente;
+     }while(aux!=primero);
+     return false;
+}   
+
 void listaDC::Mostrar()
 {
-   pnodo aux=primero;
-   while(aux->siguiente!=primero)
-     {
-                                
-      cout << aux->cedula << "-> ";
-      aux = aux->siguiente;
-     }
-     cout<<aux->cedula<<"->";
-     cout<<endl;
+   nodousuario* aux=primero;
+   do{
+		cout<<aux->cedula<<"->";
+		aux = aux->siguiente;
+   }while(aux != primero);
+   cout<<endl;
 }   
+void listaDC::leerarchivo(string archivo){
+	string line;
+  ifstream myfile (archivo.c_str());
+  if (myfile.is_open())
+  {
+    while ( getline (myfile,line) )
+    {
+      InsertarFinal(line);
+      
+    }
+    myfile.close();
+  }
+  else cout << "Unable to open file"; 
+  }

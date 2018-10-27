@@ -2,10 +2,10 @@
 #define LISTASIMPLE_H
 #include <cstdlib>
 #include "nodociudad.h"
-
+#include <fstream>
+#include <sstream>
 using namespace std;
 
-typedef nodociudad *pnodo;
 
 class lista {
    public:
@@ -32,6 +32,7 @@ class lista {
     void borrarPosicion(int pos);
     int largoLista();
     void Sumar(int numero1,int numero2);
+    void leerarchivo(string v);
     /*int GetValor(int pos);
     void SumarDiferenteTamano(int numero1,int numero2);
     bool PosicionValida(int pos);

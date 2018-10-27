@@ -1,5 +1,16 @@
 #include "listasimple.h"
 using namespace std;
+lista::~lista()
+{
+   pnodo aux;
+   
+   while(primero) {
+      aux = primero;
+      primero = primero->siguiente;
+      delete aux;
+   }
+   actual = NULL;
+}
 
 int lista::largoLista(){
     int cont=0;
@@ -148,7 +159,6 @@ void lista::Siguiente()
 {
    if(actual) actual = actual->siguiente;
 }
-
 void lista::Buscar(string numero){
     if(ListaVacia())
               cout << "Lista vacia" <<endl;
@@ -167,6 +177,22 @@ void lista::Buscar(string numero){
         cout << "el numero : "<<numero<<" NO se encuentra en la lista" <<endl;
     }
 }
+
+void lista::leerarchivo(string archivo){
+	string line;
+  ifstream myfile (archivo.c_str());
+  if (myfile.is_open())
+  {
+    while ( getline (myfile,line) )
+    {
+      InsertarFinal(line);
+      
+    }
+    myfile.close();
+  }
+  else cout << "Unable to open file"; 
+
+  }
 /*
 void lista::Buscar(string numero, int pos){
     if(ListaVacia())

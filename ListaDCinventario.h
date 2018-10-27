@@ -3,7 +3,6 @@
 
 #include "nodoinventario.h"
 
-typedef nodoinventario *pnodo;
 
 class listaDCinventario {
    public:
@@ -27,11 +26,13 @@ class listaDCinventario {
     void BorrarInicio();
     void borrarPosicion(int pos);
     int largoLista();
+    void leerarchivo(string v);
+    void consultarprecio(string codigo);
     
    private:
-    pnodo primero;
-    pnodo actual;
+    nodoinventario* primero;
+    nodoinventario* actual;
 };
 
-#endif /* LISTADC_H */
+#endif /* LISTADCINVENTARIO_H */
 

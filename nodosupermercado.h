@@ -6,6 +6,7 @@
 /*strcpy*/
 #include <stdio.h>
 #include <string.h>
+
 using namespace std;
 
 class nodosupermercado {
@@ -60,7 +61,6 @@ class nodosupermercado {
         
    friend class listaD;
 };
-
 
 #endif /* NODO_H */
 

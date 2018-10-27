@@ -1,12 +1,13 @@
-#ifndef LISTADC_H
-#define LISTADC_H
+#ifndef LISTADCTIPO_H
+#define LISTADCTIPO_H
 #include <fstream>
 #include <sstream>
-#include "nodousuario.h"
+#include "nodotipo.h"
 
-class listaDC {
+class listaDCtipo {
    public:
-    listaDC() { primero = actual = NULL; }
+    listaDCtipo() { primero = actual = NULL; }
+    
     void InsertarInicio(string v);
     void InsertarFinal(string v);
     void InsertarPos (string v, int pos);
@@ -25,13 +26,11 @@ class listaDC {
     void borrarPosicion(int pos);
     int largoLista();
     void leerarchivo(string v);
-    bool verificar(string cedula);
-     
+    bool verificarcedula(string tipo,string cedula);
+    
    private:
-    nodousuario* primero;
-    nodousuario* actual;
-    friend class nodoTipo;
+    nodotipo* primero;
+    nodotipo* actual;
 };
 
-#endif /* LISTADC_H */
-
+#endif /* LISTADCTIPO_H */

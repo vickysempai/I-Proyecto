@@ -71,7 +71,5 @@ class nodoinventario{
         
    friend class listaDCinventario;
 };
-
-
 #endif /* NODOINVENTARIO_H */
 

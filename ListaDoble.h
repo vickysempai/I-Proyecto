@@ -3,10 +3,10 @@
 
 #include <iostream>
 #include "nodosupermercado.h"
+#include <fstream>
+#include <sstream>
 
 using namespace std;
-
-typedef nodosupermercado *pnodo;
 
 class listaD {
    public:
@@ -27,10 +27,11 @@ class listaD {
     void BorrarInicio();
     void borrarPosicion(int pos);
     int largoLista();
+     void leerarchivo(string v);
     
    private:
-    pnodo primero;
-    pnodo actual;
+    nodosupermercado* primero;
+    nodosupermercado* actual;
 
 };
 

@@ -1,9 +1,21 @@
 #include "ListaDoble.h"
 
+listaD::~listaD()
+{
+   nodosupermercado* aux;
+   
+   while(primero) {
+      aux = primero;
+      primero = primero->siguiente;
+      delete aux;
+   }
+   actual = NULL;
+}
+
 int listaD::largoLista(){
     int cont=0;
 
-    pnodo aux;
+    nodosupermercado* aux;
     aux = primero;
     if(ListaVacia()){
         return cont;
@@ -33,7 +45,7 @@ void listaD::InsertarFinal(string v)
    if (ListaVacia())
      primero = new nodosupermercado(v);
    else
-     { pnodo aux = primero;
+     { nodosupermercado* aux = primero;
         while ( aux->siguiente != NULL)
           aux= aux->siguiente;
         aux->siguiente=new nodosupermercado(v);
@@ -51,13 +63,13 @@ void listaD::InsertarPos(string v,int pos)
           InsertarInicio(v);    
         else
         {
-             pnodo aux= primero;
+             nodosupermercado* aux= primero;
              int i =2;
              while((i != pos )&&(aux->siguiente!= NULL)){
                    i++;
                    aux=aux->siguiente;
              }
-             pnodo nuevo= new nodosupermercado(v);
+             nodosupermercado* nuevo= new nodosupermercado(v);
              nuevo->siguiente=aux->siguiente;
              aux->siguiente=nuevo;
              aux->siguiente->anterior=aux;
@@ -76,13 +88,13 @@ void listaD::BorrarFinal()
                 primero= NULL;
             } else {
 
-                pnodo aux = primero;
+                nodosupermercado* aux = primero;
                 while (aux->siguiente->siguiente != NULL) 
                 {
                     aux = aux->siguiente;
                 }
                 
-              pnodo temp = aux->siguiente;
+              nodosupermercado* temp = aux->siguiente;
               aux->siguiente= NULL;
 
                 
@@ -101,7 +113,7 @@ void listaD::BorrarInicio()
                 primero= NULL;
             } else {
 
-                pnodo aux = primero;
+                nodosupermercado* aux = primero;
                 primero=primero->siguiente;                
                 delete aux;
             }
@@ -133,13 +145,13 @@ void listaD:: borrarPosicion(int pos)
           else
           {   
             int cont=2;
-            pnodo aux=  primero;
+            nodosupermercado* aux=  primero;
             while(cont<pos)
             {
              aux=aux->siguiente;
              cont++;
             }
-            pnodo temp=aux->siguiente;
+            nodosupermercado* temp=aux->siguiente;
             aux->siguiente=aux->siguiente->siguiente;
             aux->siguiente->anterior=aux;
             delete temp;
@@ -161,3 +173,17 @@ void listaD::Mostrar()
    }
    cout << endl;
 }
+void listaD::leerarchivo(string archivo){
+	string line;
+	ifstream myfile (archivo.c_str());
+	  if (myfile.is_open())
+	  {
+	    while ( getline (myfile,line) )
+	    {
+	      InsertarFinal(line);
+	      
+	    }
+	    myfile.close();
+	  }
+	  else cout << "Unable to open file"; 
+	  }

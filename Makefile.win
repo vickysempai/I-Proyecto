@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = ListaDC.o Main.o listasimple.o ListaDoble.o ListaDCinventario.o
-LINKOBJ  = ListaDC.o Main.o listasimple.o ListaDoble.o ListaDCinventario.o
+OBJ      = ListaDC.o Main.o listasimple.o ListaDoble.o ListaDCinventario.o funcionesmenus.o listaDCalv.o
+LINKOBJ  = ListaDC.o Main.o listasimple.o ListaDoble.o ListaDCinventario.o funcionesmenus.o listaDCalv.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -38,3 +38,9 @@ ListaDoble.o: ListaDoble.cpp
 
 ListaDCinventario.o: ListaDCinventario.cpp
 	$(CPP) -c ListaDCinventario.cpp -o ListaDCinventario.o $(CXXFLAGS)
+
+funcionesmenus.o: funcionesmenus.cpp
+	$(CPP) -c funcionesmenus.cpp -o funcionesmenus.o $(CXXFLAGS)
+
+listaDCalv.o: listaDCalv.cpp
+	$(CPP) -c listaDCalv.cpp -o listaDCalv.o $(CXXFLAGS)
